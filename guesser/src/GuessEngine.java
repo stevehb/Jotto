@@ -14,34 +14,17 @@ class GuessEngine {
     // need a map of words and results
     // need the alphabet with letter status
 
-    ArrayList<String> words;
-
+    WordSelector words;
     int wordLength;
 
     public GuessEngine(int wordLen) {
         wordLength = wordLen;
-        words = new ArrayList<String>();
-        try {
-            logger.info("opening the dictionary");
-            BufferedReader buff = new BufferedReader(new FileReader("wordlist.txt"));
-            logger.info("\treading words of length " + wordLength);
-            String line = buff.readLine();
-            while(line != null) {
-                line = line.trim();
-                if(line.length() == wordLength) 
-                    words.add(line);
-                line = buff.readLine();
-            }
-            logger.info("\tfound " + words.size() + " words");
-        } catch(IOException e) {
-            logger.error("failed to open file: " + e);
-            return;
-        }
-        logger.info("finished reading words");
+        words = new WordSelector(wordLength);
     }
 
     String getGuess() {
-        return words.get(1);
+        
+        return "guess";
     }
 
 
