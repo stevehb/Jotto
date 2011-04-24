@@ -30,7 +30,12 @@ class Dictionary {
             Word w;
             while(line != null) {
                 line = line.trim();
-                pair = line.split("\t");
+                pair = line.split(",");
+                if(pair.length != 2) {
+                    logger.warn("ERROR: found unparsable line " + line);
+                    line = buff.readLine();
+                    continue;
+                }
                 if(pair[0].length() == wordLength) {
                     w = new Word();
                     w.word = pair[0];
