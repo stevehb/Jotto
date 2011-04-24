@@ -18,12 +18,22 @@ class GuessDriver {
         System.out.println("Choose your word!");
 
         Scanner in = new Scanner(System.in);
-        System.out.print("Enter word length: ");
+        System.out.print("Enter word length [3-6]: ");
         int wordLength = in.nextInt();
         if(wordLength < MIN_LETTERS || wordLength > MAX_LETTERS) {
-            System.out.println("Word length must be between " + MIN_LETTERS + " and " + MAX_LETTERS);
-            return;
+            System.out.println("Word length must be between " + MIN_LETTERS + 
+                               " and " + MAX_LETTERS);
         }
+        else {
+            System.out.println("/tinput totally ok because\n" +
+                               "\t\twordLength < MIN_LETTERS = " + (wordLength < MIN_LETTERS) + "\n" +
+                               "\t\twordLength > MAX_LETTERS = " + (wordLength > MAX_LETTERS));
+        }
+        if(true) return;
+
+
+
+
         GuessEngine ge = new GuessEngine(wordLength);
 
         String guess;
